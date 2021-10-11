@@ -1,7 +1,7 @@
 CREATE TABLE game_project_platform (
     game_project_platform_id INTEGER NOT NULL,
     game_project_platform_name VARCHAR(20) NOT NULL,
-    PRIMARY KEY (game_project_platform_id),
+    PRIMARY KEY (game_project_platform_id)
 );
 
 CREATE TABLE game_project_documentation (
@@ -9,7 +9,7 @@ CREATE TABLE game_project_documentation (
     game_project_business_plan LONGTEXT NULL,
     game_project_design_document LONGTEXT NULL,
     game_project_vision LONGTEXT NULL,
-    PRIMARY KEY (game_project_documentation_id),
+    PRIMARY KEY (game_project_documentation_id)
 );
 
 CREATE TABLE game_project (
@@ -19,7 +19,7 @@ CREATE TABLE game_project (
     game_project_documentation_id INTEGER NOT NULL,
     PRIMARY KEY (game_project_id, game_project_documentation_id),
     FOREIGN KEY (game_project_documentation_id)
-        REFERENCES game_project_documentation (game_project_documentation_id),
+        REFERENCES game_project_documentation (game_project_documentation_id)
 );
 
 CREATE TABLE platform_to_game_object (
@@ -29,13 +29,13 @@ CREATE TABLE platform_to_game_object (
     FOREIGN KEY (game_project_platform_id)
         REFERENCES game_project_platform (game_project_platform_id),
         FOREIGN KEY (game_project_id)
-            REFERENCES game_project (game_project_id),
+            REFERENCES game_project (game_project_id)
 );
 
 CREATE TABLE game_asset_type (
     game_asset_type_id INTEGER NOT NULL,
     game_asset_type_name VARCHAR(20) NOT NULL,
-    PRIMARY KEY (game_asset_type_id),
+    PRIMARY KEY (game_asset_type_id)
 );
 
 CREATE TABLE game_asset (
@@ -49,7 +49,7 @@ CREATE TABLE game_asset (
     FOREIGN KEY (game_project_id)
         REFERENCES game_project (game_project_id),
         FOREIGN KEY (game_asset_type_id)
-            REFERENCES game_asset_type (game_asset_type_id),
+            REFERENCES game_asset_type (game_asset_type_id)
 );
 
 CREATE TABLE game_project_version (
@@ -62,19 +62,19 @@ CREATE TABLE game_project_version (
     game_project_id INTEGER NOT NULL,
     PRIMARY KEY (game_project_version_id, game_project_id),
     FOREIGN KEY (game_project_id)
-        REFERENCES game_project (game_project_id),
+        REFERENCES game_project (game_project_id)
 );
 
 CREATE TABLE officer_role (
     officer_role_id INTEGER NOT NULL,
     officer_role_name VARCHAR(20) NOT NULL,
-    PRIMARY KEY (officer_role_id),
+    PRIMARY KEY (officer_role_id)
 );
 
 CREATE TABLE test_level (
     test_level_id INTEGER NOT NULL,
     test_level_name VARCHAR(20) NOT NULL,
-    PRIMARY KEY (test_level_id),
+    PRIMARY KEY (test_level_id)
 );
 
 CREATE TABLE test_document (
@@ -83,13 +83,13 @@ CREATE TABLE test_document (
     test_document_data LONGTEXT NOT NULL,
     PRIMARY KEY (test_document_id, test_level_id),
     FOREIGN KEY (test_level_id)
-        REFERENCES test_level(test_level_id),
+        REFERENCES test_level(test_level_id)
 );
 
 CREATE TABLE organization_type (
     organization_type_id INTEGER NOT NULL,
     organization_type_name VARCHAR(20) NOT NULL,
-    PRIMARY KEY (organization_type_id),
+    PRIMARY KEY (organization_type_id)
 );
 
 CREATE TABLE organization (
@@ -105,7 +105,7 @@ CREATE TABLE organization (
         FOREIGN KEY (organization_type_id)
             REFERENCES organization_type (organization_type_id),
             FOREIGN KEY (game_project_id)
-                REFERENCES game_project (game_project_id),
+                REFERENCES game_project (game_project_id)
 );
 
 CREATE TABLE officer (
@@ -117,7 +117,7 @@ CREATE TABLE officer (
     FOREIGN KEY (officer_role_id)
         REFERENCES officer_role (officer_role_id),
         FOREIGN KEY (organization_id)
-            REFERENCES organization (organization_id),
+            REFERENCES organization (organization_id)
 );
 
 CREATE TABLE user (
@@ -127,5 +127,5 @@ CREATE TABLE user (
     officer_id INTEGER NOT NULL,
     PRIMARY KEY (user_id, officer_id),
     FOREIGN KEY (officer_id)
-        REFERENCES officer (officer_id),
+        REFERENCES officer (officer_id)
 );
