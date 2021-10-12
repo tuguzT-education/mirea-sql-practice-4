@@ -49,4 +49,11 @@ VALUES (
         NULL,
         NULL,
         'Newly created game studio that have no games yet.'
+       ),
+       (
+        'Alexey Pajitnov Studio',
+        3,
+        NULL,
+        1,
+        'Alexey Pajitnov'
        );
