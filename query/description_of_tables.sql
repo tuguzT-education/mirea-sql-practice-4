@@ -1,0 +1,13 @@
+DESCRIBE game_asset;
+DESCRIBE game_asset_type;
+DESCRIBE game_project;
+DESCRIBE game_project_platform;
+DESCRIBE game_project_version;
+DESCRIBE officer;
+DESCRIBE officer_role;
+DESCRIBE organization;
+DESCRIBE organization_type;
+DESCRIBE platform_to_game_object;
+DESCRIBE test_document;
+DESCRIBE test_level;
+DESCRIBE user;
