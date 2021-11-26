@@ -97,13 +97,20 @@ CREATE TABLE organization (
     organization_name VARCHAR(100) NOT NULL,
     organization_type_id INTEGER NOT NULL,
     test_document_id INTEGER NULL,
-    game_project_id INTEGER NULL,
     organization_description LONGTEXT NOT NULL,
     PRIMARY KEY (organization_id, organization_type_id),
     FOREIGN KEY (test_document_id)
         REFERENCES test_document (test_document_id),
     FOREIGN KEY (organization_type_id)
         REFERENCES organization_type (organization_type_id),
+);
+
+CREATE TABLE organization_to_game_project (
+    organization_id INTEGER NOT NULL,
+    game_project_id INTEGER NOT NULL,
+    PRIMARY KEY (game_project_platform_id, game_project_id),
+    FOREIGN KEY (organization_id)
+        REFERENCES organization (organization_id),
     FOREIGN KEY (game_project_id)
         REFERENCES game_project (game_project_id)
 );
