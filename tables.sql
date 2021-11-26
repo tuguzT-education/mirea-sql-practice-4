@@ -102,13 +102,13 @@ CREATE TABLE organization (
     FOREIGN KEY (test_document_id)
         REFERENCES test_document (test_document_id),
     FOREIGN KEY (organization_type_id)
-        REFERENCES organization_type (organization_type_id),
+        REFERENCES organization_type (organization_type_id)
 );
 
 CREATE TABLE organization_to_game_project (
     organization_id INTEGER NOT NULL,
     game_project_id INTEGER NOT NULL,
-    PRIMARY KEY (game_project_platform_id, game_project_id),
+    PRIMARY KEY (organization_id, game_project_id),
     FOREIGN KEY (organization_id)
         REFERENCES organization (organization_id),
     FOREIGN KEY (game_project_id)
@@ -127,12 +127,12 @@ CREATE TABLE officer (
         REFERENCES organization (organization_id)
 );
 
-CREATE TABLE user (
+CREATE TABLE `user` (
     user_id INTEGER AUTO_INCREMENT,
     user_login VARCHAR(20) NOT NULL,
     user_password_encrypted VARCHAR(100) NOT NULL,
-    officer_id INTEGER NOT NULL,
-    PRIMARY KEY (user_id, officer_id),
+    officer_id INTEGER NULL,
+    PRIMARY KEY (user_id),
     FOREIGN KEY (officer_id)
         REFERENCES officer (officer_id)
 );
