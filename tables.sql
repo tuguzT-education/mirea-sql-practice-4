@@ -14,7 +14,7 @@ CREATE TABLE game_project_documentation (
 
 CREATE TABLE game_project (
     game_project_id INTEGER AUTO_INCREMENT,
-    game_project_name VARCHAR(255) NOT NULL,
+    game_project_name VARCHAR(100) NOT NULL,
     game_project_description LONGTEXT NOT NULL,
     game_project_documentation_id INTEGER NOT NULL,
     PRIMARY KEY (game_project_id, game_project_documentation_id),
@@ -94,7 +94,7 @@ CREATE TABLE organization_type (
 
 CREATE TABLE organization (
     organization_id INTEGER AUTO_INCREMENT,
-    organization_name VARCHAR(50) NOT NULL,
+    organization_name VARCHAR(100) NOT NULL,
     organization_type_id INTEGER NOT NULL,
     test_document_id INTEGER NULL,
     game_project_id INTEGER NULL,
@@ -110,7 +110,7 @@ CREATE TABLE organization (
 
 CREATE TABLE officer (
     officer_id INTEGER AUTO_INCREMENT,
-    officer_name VARCHAR(20) NOT NULL,
+    officer_name VARCHAR(200) NOT NULL,
     officer_role_id INTEGER NOT NULL,
     organization_id INTEGER NOT NULL,
     PRIMARY KEY (officer_id, officer_role_id, organization_id),
